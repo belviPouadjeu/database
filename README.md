@@ -162,6 +162,35 @@ WITH Public_Employees (EMP_ID, F_NAME, L_NAME, JOB_ID) AS
 SELECT * FROM Public_Employees;
 ```
 
+### 6. Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+
+```sql
+select * from EMPLOYEES where JOB_ID IN (select JOB_IDENT from JOBS);
+```
+
+### 7. Retrieve only the list of employees whose JOB_TITLE is Jr. Designer.
+
+```sql
+select * from EMPLOYEES where JOB_ID IN (select JOB_IDENT from JOBS where JOB_TITLE= 'Jr. Designer');
+```
+
+### 8. Retrieve JOB information and who earn more than $70,000.
+
+```sql
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from JOBS where JOB_IDENT IN (select JOB_ID from EMPLOYEES where SALARY > 70000 );
+```
+
+### 9. Retrieve JOB information and list of employees whose birth year is after 1976.
+
+```sql
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from JOBS where JOB_IDENT IN (select JOB_ID from EMPLOYEES where YEAR(B_DATE)>1976 );
+```
+
+### 10. Retrieve JOB information and list of female employees whose birth year is after 1976.
+```sql
+select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from JOBS  where JOB_IDENT IN (select JOB_ID from EMPLOYEES where YEAR(B_DATE)>1976 and SEX='F' );
+```
+
 # String Patterns, Sorting and Grouping in MySQL using database PETRESCUE-CREATE.sql
 
 ## Exercise 2: Aggregate Functions
