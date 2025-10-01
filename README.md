@@ -109,5 +109,100 @@ HAVING COUNT(*) < 4
 ORDER BY AVG_SALARY;
 ```
 
+# String Patterns, Sorting and Grouping in MySQL using database PETRESCUE-CREATE.sql
 
+## Exercise 2: Aggregate Functions
 
+### Query A1: Calculate the total cost of all animal rescues
+
+```sql
+SELECT SUM(COST) FROM PETRESCUE;
+```
+
+### Query A2: Display total cost in a column called SUM_OF_COST
+
+```sql
+SELECT SUM(COST) AS SUM_OF_COST FROM PETRESCUE;
+```
+
+### Query A3: Display the maximum quantity of animals rescued
+
+```sql
+SELECT MAX(QUANTITY) FROM PETRESCUE;
+```
+
+### Query A4: Display the average cost of animals rescued
+
+```sql
+SELECT AVG(COST) FROM PETRESCUE;
+```
+
+### Query A5: Display the average cost of rescuing a dog
+
+```sql
+SELECT AVG(COST) FROM PETRESCUE WHERE ANIMAL = 'Dog';
+```
+
+## Exercise 3: Scalar and String Functions
+
+### Query B1: Display the rounded cost of each rescue
+
+```sql
+SELECT ROUND(COST) FROM PETRESCUE;
+```
+
+### Query B2: Display the length of each animal name
+
+```sql
+SELECT LENGTH(ANIMAL) FROM PETRESCUE;
+```
+
+### Query B3: Display the animal name in uppercase
+
+```sql
+SELECT UPPER(ANIMAL) FROM PETRESCUE;
+```
+
+### Query B4: Display the animal name in uppercase without duplications
+
+```sql
+SELECT DISTINCT UPPER(ANIMAL) FROM PETRESCUE;
+```
+
+### Query B5: Display all columns where animals rescued are cats (use lowercase)
+
+```sql
+SELECT * FROM PETRESCUE WHERE LOWER(ANIMAL) = 'cat';
+```
+
+## Exercise 4: Date and Time Functions
+
+### Query C1: Display the day of the month when cats have been rescued
+
+```sql
+SELECT DAY(RESCUEDATE) FROM PETRESCUE WHERE ANIMAL = 'Cat';
+```
+
+### Query C2: Display the number of rescues on the 5th month
+
+```sql
+SELECT COUNT(*) FROM PETRESCUE WHERE MONTH(RESCUEDATE) = 5;
+```
+
+### Query C3: Display the number of rescues on the 14th day of the month
+
+```sql
+SELECT COUNT(*) FROM PETRESCUE WHERE DAY(RESCUEDATE) = 14;
+```
+
+### Query C4: Display the third day from each rescue (vet appointment)
+
+```sql
+SELECT DATE_ADD(RESCUEDATE, INTERVAL 3 DAY) FROM PETRESCUE;
+```
+
+### Query C5: Display the length of time animals have been rescued
+
+```sql
+SELECT DATEDIFF(CURDATE(), RESCUEDATE) FROM PETRESCUE;
+```
