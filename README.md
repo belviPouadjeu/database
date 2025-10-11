@@ -191,6 +191,32 @@ select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from JOBS where JOB_IDENT IN (
 select JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT from JOBS  where JOB_IDENT IN (select JOB_ID from EMPLOYEES where YEAR(B_DATE)>1976 and SEX='F' );
 ```
 
+### 11. Perform an implicit cartesian/cross join between EMPLOYEES and JOBS tables.
+```sql
+select * from EMPLOYEES, JOBS;
+```
+
+### 12. Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+```sql
+select * from EMPLOYEES, JOBS where EMPLOYEES.JOB_ID = JOBS.JOB_IDENT;
+```
+
+### 13. Redo the previous query, using shorter aliases for table names.
+```sql
+select * from EMPLOYEES E, JOBS J where E.JOB_ID = J.JOB_IDENT;
+```
+
+### 14. Redo the previous query, but retrieve only the Employee ID, Employee Name and Job Title.
+```sql
+select EMP_ID,F_NAME,L_NAME, JOB_TITLE from EMPLOYEES E, JOBS J where E.JOB_ID = J.JOB_IDENT;
+```
+
+### 15. Redo the previous query, but specify the fully qualified column names with aliases in the SELECT clause.
+
+```sql
+select E.EMP_ID,E.F_NAME,E.L_NAME, J.JOB_TITLE from EMPLOYEES E, JOBS  J where E.JOB_ID = J.JOB_IDENT;
+```
+
 # String Patterns, Sorting and Grouping in MySQL using database PETRESCUE-CREATE.sql
 
 ## Exercise 2: Aggregate Functions
@@ -288,3 +314,42 @@ SELECT DATE_ADD(RESCUEDATE, INTERVAL 3 DAY) FROM PETRESCUE;
 ```sql
 SELECT DATEDIFF(CURDATE(), RESCUEDATE) FROM PETRESCUE;
 ```
+
+
+# School Dataset Analysis Problems using database mysql_learners.sql
+
+## Problem 1
+How many Elementary Schools are in the dataset?
+
+## Problem 2
+What is the highest Safety Score?
+
+## Problem 3
+Which schools have highest Safety Score?
+
+## Problem 4
+What are the top 10 schools with the highest "Average Student Attendance"?
+
+## Problem 5
+Retrieve the list of 5 Schools with the lowest Average Student Attendance sorted in ascending order based on attendance.
+
+## Problem 6
+Now remove the '%' sign from the above result set for Average Student Attendance column.
+
+## Problem 7
+Which Schools have Average Student Attendance lower than 70%?
+
+## Problem 8
+Get the total College Enrollment for each Community Area.
+
+## Problem 9
+Get the 5 Community Areas with the least total College Enrollment sorted in ascending order.
+
+## Problem 10
+List 5 schools with lowest safety score.
+
+## Problem 11
+Get the hardship index for the community area which has College Enrollment of 4368.
+
+## Problem 12
+Get the hardship index for the community area which has the school with the highest enrollment.
